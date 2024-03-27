@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "subscriber": "node ./src/subscriber",
+    "publisher": "node ./src/publisher",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
