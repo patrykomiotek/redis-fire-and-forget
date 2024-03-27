@@ -11,6 +11,7 @@ type Message = {
     playerId: string;
     nick: string;
     code: string;
+    content?: string;
   };
 };
 
@@ -38,6 +39,7 @@ const message: Message = {
     playerId: "456",
     nick: "julek",
     code: "56778",
+    content: "Player joined the session",
   },
 };
 
