@@ -4,7 +4,17 @@ import Redis from "ioredis";
 // TODO: for upstash
 // import { Redis } from "@upstash/redis";
 
-const redis = new Redis(process.env.REDIS_DSN);
+type Message = {
+  type: string;
+  payload: {
+    success: boolean;
+    playerId: string;
+    nick: string;
+    code: string;
+  };
+};
+
+const redis = new Redis(process.env.REDIS_DSN!);
 // TODO: for upstash
 // const redis = new Redis({
 //   url: process.env.REDIS_URL,
@@ -21,7 +31,7 @@ const redis = new Redis(process.env.REDIS_DSN);
 //   console.log("Published %s to %s", message, channel);
 // }, 1000);
 
-const message = {
+const message: Message = {
   type: "session-join-status",
   payload: {
     success: true,
@@ -32,6 +42,19 @@ const message = {
 };
 
 const channel = "session-123";
-await redis.publish(channel, JSON.stringify(message));
 
-process.exit(0);
+const publish = async () => {
+  try {
+    await redis.publish(channel, JSON.stringify(message));
+    process.exit(0);
+  } catch (error) {
+    console.error("Redis publish error: ", error);
+    process.exit(1);
+  }
+};
+
+const start = async () => {
+  await publish();
+};
+
+start();
