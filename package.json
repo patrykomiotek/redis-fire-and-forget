@@ -6,6 +6,9 @@
   "scripts": {
     "subscriber": "ts-node ./src/subscriber.ts",
     "publisher": "ts-node ./src/publisher.ts",
+    "01-readable-stream": "ts-node ./src/streams/01-readable-stream.ts",
+    "02-writable-stream": "ts-node ./src/streams/02-writable-stream.ts",
+    "03-pipes": "ts-node ./src/streams/03-pipes.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
