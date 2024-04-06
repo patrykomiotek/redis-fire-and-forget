@@ -28,7 +28,7 @@ const server = http.createServer((request, response) => {
   readableStream.pipe(response);
 });
 
-const PORT = 3001;
+const PORT = 3002;
 
 server.listen(PORT, "127.0.0.1");
 console.log(`Server is listening on ${PORT}`);
