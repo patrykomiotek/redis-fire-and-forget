@@ -7,6 +7,7 @@ import Redis from "ioredis";
 type Message = {
   type: string;
   payload: {
+    id: string;
     content?: string;
   };
 };
@@ -29,9 +30,10 @@ const redis = new Redis(process.env.REDIS_DSN!);
 // }, 1000);
 
 const message: Message = {
-  type: "session-join-status",
+  type: "user-joined",
   payload: {
-    content: "Player joined the session",
+    id: "qwerty",
+    content: "User has joined the session",
   },
 };
 

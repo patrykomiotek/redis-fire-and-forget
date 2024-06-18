@@ -9,5 +9,6 @@ const writableStream = fs.createWriteStream(outputFilePath);
 
 readableStream.on("data", (chunk) => {
   console.log("\n\nnew chunk:");
+  console.log(chunk);
   writableStream.write(chunk);
 });
