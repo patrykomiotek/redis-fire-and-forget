@@ -5,7 +5,7 @@ const redis = new Redis(process.env.REDIS_DSN!);
 
 // const encoder = new TextEncoder();
 
-redis.subscribe("my-channel-1", "session-123", (error, count) => {
+redis.subscribe("my-channel-1", "future-123", (error, count) => {
   if (error) {
     // Just like other commands, subscribe() can fail for some reasons,
     // ex network issues.
@@ -19,7 +19,7 @@ redis.subscribe("my-channel-1", "session-123", (error, count) => {
 });
 
 redis.on("message", (channel, message) => {
-  console.log(`Received ${message} from ${channel}`);
+  console.log(`Received ${message} from channel #${channel}`);
 
   // encoder.encode(`data: ${message}\n\n`);
 });

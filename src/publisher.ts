@@ -1,14 +1,15 @@
 import "dotenv/config";
 
 import Redis from "ioredis";
+import { nanoid } from "nanoid";
 // TODO: for upstash
 // import { Redis } from "@upstash/redis";
 
 type Message = {
   type: string;
   payload: {
-    id: string;
-    content?: string;
+    id: number;
+    content: string;
   };
 };
 
@@ -29,15 +30,19 @@ const redis = new Redis(process.env.REDIS_DSN!);
 //   console.log("Published %s to %s", message, channel);
 // }, 1000);
 
+function randomNumber(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
 const message: Message = {
   type: "user-joined",
   payload: {
-    id: "qwerty",
+    id: Math.round(randomNumber(101, 999)),
     content: "User has joined the session",
   },
 };
 
-const channel = "session-123";
+const channel = "future-123";
 
 const publish = async () => {
   try {

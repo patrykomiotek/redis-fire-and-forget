@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "subscriber": "ts-node ./src/subscriber.ts",
-    "publisher": "ts-node ./src/publisher.ts",
-    "01-readable-stream": "ts-node ./src/streams/01-readable-stream.ts",
-    "02-writable-stream": "ts-node ./src/streams/02-writable-stream.ts",
-    "03-pipes": "ts-node ./src/streams/03-pipes.ts",
+    "subscriber": "tsx ./src/subscriber.ts",
+    "publisher": "tsx ./src/publisher.ts",
+    "01-readable-stream": "tsx ./src/streams/01-readable-stream.ts",
+    "02-writable-stream": "tsx ./src/streams/02-writable-stream.ts",
+    "03-pipes": "tsc ./src/streams/03-pipes.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,11 +19,13 @@
     "@upstash/redis": "^1.29.0",
     "dotenv": "^16.4.5",
     "ioredis": "^5.3.2",
+    "nanoid": "^5.0.9",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
     "typescript": "^5.4.3"
   },
   "devDependencies": {
-    "@tsconfig/node-lts": "^20.1.3"
+    "@tsconfig/node-lts": "^20.1.3",
+    "tsx": "^4.19.2"
   }
 }
